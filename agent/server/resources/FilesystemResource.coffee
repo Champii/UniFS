@@ -12,10 +12,15 @@ class FilesystemRoute extends Nodulator.Route.DefaultRoute
 				return res.status(500).send err if err?
 
 				cmd = null
+				# 200 for directory
+				# 201 for file
+				code = 200
 				if stat.isDirectory()
 					cmd = fs.readdir
 				else if stat.isFile()
 					cmd = fs.readFile
+					code = 201
+
 
 				if not cmd?
 					return res.status(500).send {err: 'Unknown file'}
@@ -23,7 +28,7 @@ class FilesystemRoute extends Nodulator.Route.DefaultRoute
 				cmd req.body.path, (err, result) =>
 					return res.status(500).send err if err?
 
-					res.status(200).send result
+					res.status(code).send result
 
 
 class FilesystemResource extends Nodulator.Resource 'Filesystem', FilesystemRoute

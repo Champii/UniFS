@@ -1,0 +1,8 @@
+div
+	| EXPLORER !
+	div(ng-repeat="server in serverService.list")
+		div id   : {{server.id}}	
+		div name : {{server.name}}	
+		div ip   : {{server.ip}}
+		div port : {{server.port}}	
+		div root : {{server.root}}

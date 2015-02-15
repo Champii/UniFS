@@ -2,6 +2,7 @@
   "name": "app",
   "version": "0.0.1",
   "dependencies": {
+    "node-rest-client": "^1.4.4",
     "nodulator": "0.0.12"
   }
 }
