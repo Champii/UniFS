@@ -1,4 +1,9 @@
 div
-	| EXPLORER !
-	div(ng-repeat="server in serverService.list")
-		div(ng-click="list()") name : {{server.name}}
+
+	div(data-angular-treeview="true"
+	    data-tree-id="abc"
+	    data-tree-model="serverService.list"
+	    data-node-id="id"
+	    data-node-label="label"
+	    data-node-func="FetchNode"
+	    data-node-children="children")
