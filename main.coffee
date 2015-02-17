@@ -13,7 +13,7 @@ Nodulator.Use Angular
 Nodulator.Use Account
 
 Nodulator.Config
-	port: 3000
+  port: 3000
 
 Server.Init()
 Nodulator.Run()

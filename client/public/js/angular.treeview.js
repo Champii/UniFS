@@ -31,7 +31,7 @@
 			link: function ( scope, element, attrs ) {
 				//tree id
 				var treeId = attrs.treeId;
-			
+
 				//tree model
 				var treeModel = attrs.treeModel;
 
@@ -44,8 +44,11 @@
 				//children
 				var nodeChildren = attrs.nodeChildren || 'children';
 
-				//node func
-				var nodeFunc = attrs.nodeFunc || function () {};
+				//node head func
+				var nodeHeadFunc = attrs.nodeHeadFunc || function () {};
+
+				//node labelfunc
+				var nodeLabelFunc = attrs.nodeLabelFunc || function () {};
 
 				//tree template
 				var template =
@@ -55,7 +58,7 @@
 							'<i class="expanded" data-ng-show="node.' + nodeChildren + '.length && !node.collapsed" data-ng-click="' + treeId + '.selectNodeHead(node)"></i>' +
 							'<i class="normal" data-ng-hide="node.' + nodeChildren + '.length"></i> ' +
 							'<span data-ng-class="node.selected" data-ng-click="' + treeId + '.selectNodeLabel(node)">{{node.' + nodeLabel + '}}</span>' +
-							'<div data-ng-hide="node.collapsed" data-tree-id="' + treeId + '" data-tree-model="node.' + nodeChildren + '" data-node-id=' + nodeId + ' data-node-label=' + nodeLabel + ' data-node-children=' + nodeChildren + ' data-node-func=' +  nodeFunc + '></div>' +
+							'<div data-ng-hide="node.collapsed" data-tree-id="' + treeId + '" data-tree-model="node.' + nodeChildren + '" data-node-id=' + nodeId + ' data-node-label=' + nodeLabel + ' data-node-children=' + nodeChildren + ' data-node-func=' +  nodeHeadFunc + '></div>' +
 						'</li>' +
 					'</ul>';
 
@@ -65,7 +68,7 @@
 
 					//root node
 					if( attrs.angularTreeview ) {
-					
+
 						//create tree object if not exists
 						scope[treeId] = scope[treeId] || {};
 
@@ -76,9 +79,8 @@
 							selectedNode.collapsed = !selectedNode.collapsed;
 
 							//Call specific given function
-							scope[nodeFunc](selectedNode);
+							scope[nodeHeadFunc](selectedNode);
 
-							
 						};
 
 						//if node label clicks,
@@ -94,6 +96,9 @@
 
 							//set currentNode
 							scope[treeId].currentNode = selectedNode;
+
+							//Call specific given function
+							scope[nodeLabelFunc](selectedNode);
 						};
 					}
 

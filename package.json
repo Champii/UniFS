@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "dependencies": {
     "node-rest-client": "^1.4.4",
-    "nodulator": "0.0.12"
+    "nodulator": "0.0.12",
+    "nodulator-account": "0.0.4",
+    "nodulator-assets": "0.0.9",
+    "nodulator-angular": "0.0.10",
+    "nodulator-socket": "0.0.3"
   }
 }

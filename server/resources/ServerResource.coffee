@@ -15,10 +15,10 @@ class ServerRoute extends Nodulator.Route.DefaultRoute
 		@Post '/:id/list', (req, res) =>
 			return res.status(500).send {err: 'No path given'} if not req.body.path?
 
-			r = req[@resource.lname]
+			r = req.resources[@resource.lname]
 
-			args = 
-				headers:{"Content-Type": "application/json"} 
+			args =
+				headers:{"Content-Type": "application/json"}
 				data: path: req.body.path
 
 			servAnswer = client.post 'http://' + r.ip + ':' + r.port + '/api/1/filesystems/list', args, (data, response) =>
@@ -32,10 +32,10 @@ class ServerRoute extends Nodulator.Route.DefaultRoute
 		@Post '/:id/get', (req, res) =>
 			return res.status(500).send {err: 'No path given'} if not req.body.path?
 
-			r = req[@resource.lname]
+			r = req.resources[@resource.lname]
 
-			args = 
-				headers:{"Content-Type": "application/json"} 
+			args =
+				headers:{"Content-Type": "application/json"}
 				data: path: req.body.path
 
 			servAnswer = client.post 'http://' + r.ip + ':' + r.port + '/api/1/filesystems/get', args, (data, response) =>
@@ -54,7 +54,7 @@ ServerResource.Create
 	name: 'server1'
 	ip: '127.0.0.1'
 	port: '3001'
-	root: '/Users/Pedago'
+	root: '/home/champii'
 , (err, serv) ->
 	return console.error err if err?
 

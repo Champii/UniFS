@@ -1,8 +1,11 @@
 class ExplorerDirective extends Nodulator.Directive 'explorer', 'serverService'
 
-	FetchNode: (node) ->
-		# console.log 'ToFetch', node
-		for item in node.children
-			@serverService.FetchTree item
+  FetchNode: (node) ->
+    for item in node.children
+      @serverService.FetchTree item
+
+  FetchFile: (node) ->
+    console.log 'FetchFile (ExplorerDirective)', node
+    @serverService.FetchFile node
 
 ExplorerDirective.Init()

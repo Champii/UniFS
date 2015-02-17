@@ -1,1 +1,1 @@
-app = angular.module 'app', ['angularTreeview']
+app = angular.module 'app', ['ngSanitize', 'angularTreeview']

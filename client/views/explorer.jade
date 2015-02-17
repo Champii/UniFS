@@ -1,9 +1,15 @@
 div
 
-	div(data-angular-treeview="true"
-	    data-tree-id="abc"
-	    data-tree-model="serverService.list"
-	    data-node-id="id"
-	    data-node-label="label"
-	    data-node-func="FetchNode"
-	    data-node-children="children")
+  div(data-angular-treeview="true"
+      data-tree-id="abc"
+      data-tree-model="serverService.list"
+      data-node-id="id"
+      data-node-label="label"
+      data-node-head-func="FetchNode"
+      data-node-label-func="FetchFile"
+      data-node-children="children", style="float: left;width: 20%;")
+
+  div(class="col-md-8", style="padding-left: 50px;overflow: auto;")
+    pre
+      code {{serverService.shownFile}}
+  //- div(ng-bind-html="serverService.shownFile", style="float: right;")
